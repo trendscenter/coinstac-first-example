@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "single shot regression demo",
+    "id": "avg_test",
+    "version": "v1.0.0",
+    "repository": "https:\/\/github.com\/hvgazula\/avg_test",
+    "description": "a test from single shot regresssion"
+  },
+  "computation": {
+    "type": "docker",
+    "dockerImage": "avg_test",
+    "command": [
+      "python",
+      "\/computation\/local.py"
+    ],
+    "remote": {
+      "type": "docker",
+      "dockerImage": "avg_test",
+      "command": [
+        "python",
+        "\/computation\/remote.py"
+      ]
+    },
+    "input": {
+      "covariates": {
+        "type": "array"
+      }
+    },
+    "output": {
+      "Beta": {
+        "type": "array"
+      }
+    }
+  }
+}
