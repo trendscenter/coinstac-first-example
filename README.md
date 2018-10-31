@@ -124,10 +124,11 @@ One quick look at the structure of the current computation using the `tree` comm
   - _Dockerfile_
   - _compspec.json_
   - _test/inputspec.json_
-  - _local.py_
-  - _remote.py_
+  - _local.py_ (contains functions that run at the local/client)
+  - _remote.py_ (contains functions that run at the remote/aggregator)
 - Notice the presence of `test/local#/simulatorRun/value#.txt`. The computation author "should" manually create a `local#/simulatorRun` inside the `test` directory for each local client. **Note:** By now, you should realize that the number of folders you create should match the array size as specified `inputspec.json`. The contents thereof can be accessed only from that particular client and no one else.
 - Creation of `cache`, `output` and `remote` folders is optional as they will be created at runtime (when running the computation in coinstac-simulator).
+
 
 ## Usage
 1. Clone this repository:\
@@ -138,3 +139,5 @@ One quick look at the structure of the current computation using the `tree` comm
 `docker build -t first-example .`
 4. Run the code:\
 `coinstac-simulator`
+
+## _Behind the Scenes:_
