@@ -141,3 +141,4 @@ One quick look at the structure of the current computation using the `tree` comm
 `coinstac-simulator`
 
 ## _Behind the Scenes:_
+![coinstac-first-example](https://github.com/MRN-Code/coinstac-first-example/blob/master/img/coinstac-first-example.png)
