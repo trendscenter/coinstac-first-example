@@ -30,6 +30,7 @@ To run your computation in COINSTAC you'll need to encapsulate it in a docker im
 
 **Note**: please ignore any test or extraneous files using a `.dockerignore`, this keeps image size down
 ```sh
+# coinstac base image
 FROM coinstac/coinstac-base-python-stream
 # Set the working directory
 WORKDIR /computation
@@ -71,3 +72,69 @@ Notice the use of “value”, that’s the way it is according to the simulator
 ### Creating the Computation Specification (_compspec.json_)
 
 More on this here at [https://github.com/MRN-Code/coinstac/blob/master/algorithm-development/computation-specification-api.md](https://github.com/MRN-Code/coinstac/blob/master/algorithm-development/computation-specification-api.md)
+
+### Description of the computation
+In order to successfully simulate a computation in the coinstac-simulator application, one needs to conform their computations to a certain structure laid out in the COINSTAC documentation (`TODO: there isn't any yet but will have to put one in there :P`).
+
+One quick look at the structure of the current computation using the `tree` command will yield the following:
+
+```
+.
+├── Dockerfile
+├── README.md
+├── ancillary.py
+├── compspec.json
+├── local.py
+├── remote.py
+├── requirements.txt
+└── test
+    ├── cache
+    │   ├── local0
+    │   │   └── simulatorRun
+    │   ├── local1
+    │   │   └── simulatorRun
+    │   ├── local2
+    │   │   └── simulatorRun
+    │   └── remote
+    │       └── simulatorRun
+    ├── inputspec.json
+    ├── local0
+    │   └── simulatorRun
+    │       └── value0.txt
+    ├── local1
+    │   └── simulatorRun
+    │       └── value1.txt
+    ├── local2
+    │   └── simulatorRun
+    │       └── value2.txt
+    ├── output
+    │   ├── local0
+    │   │   └── simulatorRun
+    │   ├── local1
+    │   │   └── simulatorRun
+    │   ├── local2
+    │   │   └── simulatorRun
+    │   └── remote
+    │       └── simulatorRun
+    └── remote
+        └── simulatorRun
+```
+
+- Every computation should essentially contain the following files (no matter what)
+  - _Dockerfile_
+  - _compspec.json_
+  - _test/inputspec.json_
+  - _local.py_
+  - _remote.py_
+- Notice the presence of `test/local#/simulatorRun/value#.txt`. The computation author "should" manually create a `local#/simulatorRun` inside the `test` directory for each local client. **Note:** By now, you should realize that the number of folders you create should match the array size as specified `inputspec.json`. The contents thereof can be accessed only from that particular client and no one else.
+- Creation of `cache`, `output` and `remote` folders is optional as they will be created at runtime (when running the computation in coinstac-simulator).
+
+## Usage
+1. Clone this repository:\
+`git clone https://github.com/mrn-code/coinstac-first-example`
+2. Change directory:\
+`cd coinstac-first-example`
+3. Build the docker image (Docker must be running):\
+`docker build -t first-example .`
+4. Run the code:\
+`coinstac-simulator`
