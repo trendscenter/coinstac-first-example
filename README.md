@@ -141,4 +141,38 @@ One quick look at the structure of the current computation using the `tree` comm
 `coinstac-simulator`
 
 ## _Behind the Scenes:_
+- The current COINSTAC architecture assumes that all computations start at the `local`. By now, you should be familiar with the distinction between `local` and `remote`.
+- More importantly, coinstac-simulator is a sequence of python calls to `local.py` and `remote.py` with the output of one function call fed as an input to the other function call in the form of command line arguments.
+     - You will notice the use of \ `python /computation/local.py` and \ `python /computation/remote.py` in `compspec.json`.
+- The architecture is designed to provide a json string (more on this below) to each function call in the form of command line arguments.
+- For example, the input argument for local client 1 will look as follows:\
+`{"input":{"covariates": "value0.txt"}, "cache": {}, state: ...}`\
+ **NOTE:** Notice the presence of “`value`” key in the `inputspec.json`. However, when this input is provided to the local function you will see that the “`value`” key is not used. [Although it might seem redundant for us, it seems to have some implication for the s/w developers.]
+- This is akin to running \
+ `python local.py {"input":{"covariates": "value0.txt"}, "cache": {}, state: ...}`
+- In the current scenario, the output from `local.py` at local client will look as follows: \
+  - At client 1: \
+ `{
+        "output": {
+            "output_val": 5,
+            "computation_phase": 'local_1'
+        }
+    }`
+  - At client 2: \
+ `{
+        "output": {
+            "output_val": 5,
+            "computation_phase": 'local_1'
+        }
+    }`
+  - At client 3: \
+ `{
+        "output": {
+            "output_val": 5,
+            "computation_phase": 'local_1'
+        }
+    }`
+- The input at `remote.py` will look as follows:
+
+
 ![coinstac-first-example](https://github.com/MRN-Code/coinstac-first-example/blob/master/img/coinstac-first-example.png)
