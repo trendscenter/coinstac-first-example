@@ -20,10 +20,10 @@ In this current repo, we will demonstrate a simple example of finding the averag
 
 ## Getting Started
 To successfully run computation in the simulator we need to
-- [Creating a dockerfile](#Create-a-dockerfile)
-- [Creating a compsec](#Create-a-compsec)
-- [Creating scripts](#Create-the-scripts)
-- [Creating an inputspec](#Create-an-inputspec)
+- [Create a dockerfile](#Creating-a-dockerfile)
+- [Create a compsec](#Creating-a-compsec)
+- [Create an inputspec](#Creating-an-inputspec)
+- [Create scripts](#Writing-computation-scripts)
 
 ### Creating the Docker file (_Dockerfile_)
 To run your computation in COINSTAC you'll need to encapsulate it in a docker image, for now we have one base python 3.6 image that all computations must inherit from. The Docker file use that image as a base, puts your code into `/computation`, and does any install required by your code.
