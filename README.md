@@ -142,15 +142,21 @@ One quick look at the structure of the current computation using the `tree` comm
 
 ## _Behind the Scenes:_
 - The current COINSTAC architecture assumes that all computations start at the `local`. By now, you should be familiar with the distinction between `local` and `remote`.
+
 - More importantly, coinstac-simulator is a sequence of python calls to `local.py` and `remote.py` with the output of one function call fed as an input to the other function call in the form of command line arguments.
-     - You will notice the use of \ `python /computation/local.py` and \ `python /computation/remote.py` in `compspec.json`.
+     - You will notice the use of  ```python /computation/local.py``` and ```python /computation/remote.py``` in `compspec.json`.
+
+
 - The architecture is designed to provide a json string (more on this below) to each function call in the form of command line arguments.
-- For example, the input argument for local client 1 will look as follows:\
-`{"input":{"covariates": "value0.txt"}, "cache": {}, state: ...}`\
+
+- For example, the input argument for local client 1 will look as follows:
+```{"input":{"covariates": "value0.txt"}, "cache": {}, state: ...}```
  **NOTE:** Notice the presence of “`value`” key in the `inputspec.json`. However, when this input is provided to the local function you will see that the “`value`” key is not used. [Although it might seem redundant for us, it seems to have some implication for the s/w developers.]
-- This is akin to running \
+
+- This is akin to running:
  `python local.py {"input":{"covariates": "value0.txt"}, "cache": {}, state: ...}`
-- In the current scenario, the output from `local.py` at local client will look as follows: \
+
+- In the current scenario, the output from `local.py` at local client will look as follows:
   - At client 1: \
  `{
         "output": {
@@ -172,7 +178,16 @@ One quick look at the structure of the current computation using the `tree` comm
             "computation_phase": 'local_1'
         }
     }`
-- The input at `remote.py` will look as follows:
+
+
+- The input at `remote.py`, which is essentially and aggregation of outputs from all the local clients, will look as follows:
+`{'input': {'local0': {'output_val': [5], 'computation_phase': 'local_1'}, 'local1': {'output_val': [6], 'computation_phase': 'local_1'}, 'local2': {'output_val': [7], 'computation_phase': 'local_1'}}, 'cache': {}, 'state': ....`
+  - Note, how the outputs from each local client are wrapped into a dictionary with the client ID being the key and sent in as an input to the `remote`.
+
+
+- Without getting into the details, we point the reader/computation author to the use of the function `list_recursive` (in _local.py_ and _remote.py_) in determining the next function that should be invoked at the `local`/`remote` having previously returned from a `remote`/`local`.
+
+- Also, notice the use of `args["state"]["baseDirectory"]` that points to `test/local#/simulatorRun`. This is how it is supposed to be working in COINSTAC.
 
 
 ![coinstac-first-example](https://github.com/MRN-Code/coinstac-first-example/blob/master/img/coinstac-first-example.png)
