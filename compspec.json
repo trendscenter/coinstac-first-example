@@ -3,7 +3,7 @@
     "name": "single shot regression demo",
     "id": "avg_test",
     "version": "v1.0.0",
-    "repository": "https:\/\/github.com\/hvgazula\/avg_test",
+    "repository": "https:\/\/github.com\/trendscenter\/coinstac-first-example",
     "description": "a test from single shot regresssion"
   },
   "computation": {
