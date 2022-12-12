@@ -1,5 +1,5 @@
 import coinstac
-import scripts.local as local
-import scripts.remote as remote
+import local as local
+import remote as remote
 
 coinstac.start(local.start, remote.start)
