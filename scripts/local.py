@@ -1,6 +1,4 @@
-import json
 import os
-import sys
 from ancillary import list_recursive
 
 
@@ -20,16 +18,13 @@ def local_1(args):
         }
     }
 
-    return json.dumps(computation_output)
+    return computation_output
 
 
-if __name__ == '__main__':
+def start(PARAM_DICT):
+    PHASE_KEY = list(list_recursive(PARAM_DICT, "computation_phase"))
 
-    parsed_args = json.loads(sys.stdin.read())
-    phase_key = list(list_recursive(parsed_args, 'computation_phase'))
-
-    if not phase_key:
-        computation_output = local_1(parsed_args)
-        sys.stdout.write(computation_output)
+    if not PHASE_KEY:
+        return local_1(PARAM_DICT)
     else:
         raise ValueError("Error occurred at Local")
