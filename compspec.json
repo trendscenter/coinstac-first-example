@@ -9,14 +9,14 @@
   },
   "computation": {
     "type": "docker",
-    "dockerImage": "coinstacteam/coinstac-example",
+    "dockerImage": "avg_test",
     "command": [
       "python",
       "\/computation\/scripts\/local.py"
     ],
     "remote": {
       "type": "docker",
-      "dockerImage": "coinstacteam/coinstac-example",
+      "dockerImage": "avg_test",
       "command": [
         "python",
         "\/computation\/scripts\/remote.py"
