@@ -99,8 +99,8 @@ RUN pip install -r requirements.txt
 COPY . /computation
 ```
 **Explanation of Dockerfile Contents:**
-- ```FROM coinstac/coinstac-base-python-stream```
-  - This is the base image upon which the current computation image will be built
+- ```FROM python:3.7.8```
+  - This establishes that the computation is running python code and sets the working version
 - ```WORKDIR /computation```
   - This is the working directory where your computation scripts are called.
 - **need to explain the other lines in the code but have to test something before I do that**
