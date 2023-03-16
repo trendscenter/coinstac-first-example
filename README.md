@@ -87,8 +87,8 @@ To run your computation in COINSTAC, you'll need to encapsulate it in a docker i
 
 **Note**: Please ignore any test or extraneous files by using a [.dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) file. This keeps the image small, which improves the performance of the build.
 ```sh
-# coinstac base image
-FROM coinstac/coinstac-base-python-stream
+# python version
+FROM python:3.7.8
 # Set the working directory
 WORKDIR /computation
 # Copy the current directory contents into the container
