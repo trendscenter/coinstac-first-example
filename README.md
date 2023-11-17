@@ -39,7 +39,7 @@ In this repo, we demonstrate a simple example of finding the average of three sc
 ## Getting Started
 To successfully run a computation in the simulator we need to do the following:
 
-  - [Write a compsec](#Writing-the-computation-specification)
+  - [Write a compspec](#Writing-the-computation-specification)
   - [Write an inputspec](#Writing-the-input-specification)
   - [Write main code](#Writing-the-main-code)
   - [Write a Dockerfile](#Writing-the-dockerfile)
