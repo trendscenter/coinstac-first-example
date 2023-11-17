@@ -1,10 +1,8 @@
-# A comment
 import os
 from ancillary import list_recursive
 
 
 def local_1(args):
-
     input_list = args["input"]
     myFile = input_list["covariates"]
 
