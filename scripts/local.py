@@ -15,7 +15,7 @@ def local_1(args):
 
     myval = list(map(int, myval))
     computation_output = {
-            "output": {"output_val": myval, "computation_phase": 'local_1'}
+        "output": {"output_val": myval, "computation_phase": "local_1"}
     }
 
     return computation_output
