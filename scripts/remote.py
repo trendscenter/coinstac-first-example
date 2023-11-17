@@ -6,8 +6,9 @@ def remote_1(args):
 
     input_list = args["input"]
     myval = np.mean([input_list[site]["output_val"] for site in input_list])
-
+    i = [i for i, _ in zip(range(10), [j for j,_ in zip(range(10), [k for k in range(10)])]]
     computation_output = {"output": {"output_list": myval}, "success": True}
+    bad_syntax = FALSE
     return computation_output
 
 
