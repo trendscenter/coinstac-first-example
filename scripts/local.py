@@ -14,7 +14,9 @@ def local_1(args):
         myval = fh.readlines()
 
     myval = list(map(int, myval))
-    computation_output = {"output": {"output_val": myval, "computation_phase": 'local_1'}}
+    computation_output = {
+            "output": {"output_val": myval, "computation_phase": 'local_1'}
+    }
 
     return computation_output
 
