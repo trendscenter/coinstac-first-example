@@ -4,7 +4,7 @@ from ancillary import list_recursive
 
 def local_1(args):
     """local_1
-        args is the COINSTAC argument dictionary
+    args is the COINSTAC argument dictionary
     """
     input_list = args["input"]
     myFile = input_list["covariates"]
@@ -25,7 +25,7 @@ def local_1(args):
 
 def start(PARAM_DICT):
     """start
-        entry point and control flow for remote computations
+    entry point and control flow for remote computations
     """
     PHASE_KEY = list(list_recursive(PARAM_DICT, "computation_phase"))
 

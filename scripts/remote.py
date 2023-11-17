@@ -4,7 +4,7 @@ from ancillary import list_recursive
 
 def remote_1(args):
     """remote_1 aggregates the numeric input from local sites
-        args is the dictionary received from local sites
+    args is the dictionary received from local sites
     """
     input_list = args["input"]
     myval = np.mean([input_list[site]["output_val"] for site in input_list])
